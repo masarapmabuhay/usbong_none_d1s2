@@ -2,7 +2,6 @@
 +scaffold; improved version of usbong_none_d1s1;<br>
 +uses the latest UsbongKit (Android);<br>
 +English must first be purchased as an in-app product
-
 +does not include actual content (i.e .utree file)
 
 # Official Company Website
