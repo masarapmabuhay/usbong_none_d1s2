@@ -168,7 +168,7 @@ public class UsbongUtils {
 	public static String myTreeFileName="";
 	
 	public static String usbongDefaultLanguage="Filipino"; //default is Filipino
-	public static String usbongSetLanguage=usbongDefaultLanguage; //default is Filipino
+//	public static String usbongSetLanguage=usbongDefaultLanguage; //default is Filipino
 	private static String currLanguage=usbongDefaultLanguage;
 	private static String usbongDefaultLanguageOfXML=usbongDefaultLanguage; //added by Mike, 20160608
 	
@@ -463,11 +463,10 @@ public class UsbongUtils {
 	//updated by Mike, 20160504
 	//must comply with JDK 1.6
 	public static boolean isLanguageIsAnException(String s) {
-/*		//commented out by Mike, 20160612
- * 		if (s.equals("English")) {
+		if (s.equals("English")) {
 			return true;
 		}
-		else */if (s.equals("Filipino")) {
+		else if (s.equals("Filipino")) {
 			return true;
 		}				
 		return false;
@@ -1414,22 +1413,22 @@ public class UsbongUtils {
 	    	else if (s.equals("Mandarin")) {
 	    		return LANGUAGE_MANDARIN;
 	    	}
-	    	if (s.equals("Bisaya")) {
+	    	else if (s.equals("Bisaya")) {
 	    		return LANGUAGE_BISAYA;
 	    	}
-	    	if (s.equals("Ilonggo")) {
+	    	else if (s.equals("Ilonggo")) {
 	    		return LANGUAGE_ILONGGO;
 	    	}
-	    	if (s.equals("Kapampangan")) {
+	    	else if (s.equals("Kapampangan")) {
 	    		return LANGUAGE_KAPAMPANGAN;
 	    	}
-	    	if (s.equals("French")) {
+	    	else if (s.equals("French")) {
 	    		return LANGUAGE_FRENCH;
 	    	}
-	    	if (s.equals("Spanish")) {
+	    	else if (s.equals("Spanish")) {
 	    		return LANGUAGE_SPANISH;
 	    	}
-	    	if (s.equals("Korean")) {
+	    	else if (s.equals("Korean")) {
 	    		return LANGUAGE_KOREAN;
 	    	}
     	}
@@ -1466,7 +1465,9 @@ public class UsbongUtils {
     }
     
     public static String getSetLanguage() {
-    	return usbongSetLanguage;
+    	//edited by Mike, 20160618
+//    	return usbongSetLanguage;
+    	return currLanguage;    		
     }
 
     //added by Mike, 20160608
@@ -1476,11 +1477,16 @@ public class UsbongUtils {
 
     public static void setDefaultLanguage(String s) {
     	usbongDefaultLanguage = s;
-    	usbongSetLanguage = usbongDefaultLanguage;
+    	
+    	//edited by Mike, 20160618
+    	//usbongSetLanguage = usbongDefaultLanguage;
+    	currLanguage = usbongDefaultLanguage;
     }
     
     public static void setLanguage(String s) {
-    	usbongSetLanguage = s;
+    	//edited by Mike, 20160618
+    	//usbongSetLanguage = s;
+    	currLanguage = s;
     }
 
     //added by Mike, 20160608
@@ -2802,7 +2808,7 @@ public class UsbongUtils {
 
     //added by JP, 26 May 2015
 	public static String parseYouTubeLink(String l) {
-		String pattern = "(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|watch\\?v%3D|%2Fvideos%2F|embed%鬯ｯ�ｩ陋ｹ�ｽ�ｽ�ｽ�ｽ�ｯ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｶ鬯ｮ�ｯ隶厄ｽｸ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｯ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\n]*";
+		String pattern = "(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|watch\\?v%3D|%2Fvideos%2F|embed%鬯ｩ蛹�ｽｽ�ｯ�ｽ�ｽ�ｽ�ｶ鬮ｯ讖ｸ�ｽ�ｽ�ｽ�ｽ�ｽ�ｯ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\n]*";
 
 		Pattern compiledPattern = Pattern.compile(pattern);
 	    Matcher matcher = compiledPattern.matcher(l);
@@ -2890,7 +2896,7 @@ public class UsbongUtils {
     	
     	return myPrompts;
     }
-
+    
     //added by Mike, 20160414
     //this is like getAvailableTranslationsArrayList(String treeFile)
 	public static ArrayList<String> getAvailableHintsArrayList(String treeFile)

@@ -308,17 +308,19 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 		  //UsbongUtils.setCurrLanguage(UsbongUtils.getLanguageBasedOnID(currLanguageBeingUsed)); //updated by Mike, 20160612
       	}
         
-        //added by Mike, 20160608
-        currSelectedItemForSetLanguage = currLanguageBeingUsed;
-        
+/* 		//commented out by Mike, 20160618
+ * 		//why? the index numbers used by currSelectedItemForSetLanguage does not always match with currLanguageBeingUsed
+ *        //added by Mike, 20160608
+ *        currSelectedItemForSetLanguage = currLanguageBeingUsed;
+ */       
         //==================================================================
-/*//comment out, not needed in DAHON, 
+        //text-to-speech stuff
+        /*//comment out, not needed in DAHON, 
  * commented out by Mike, 20160613
         Intent checkIntent = new Intent();
         checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkIntent, UsbongUtils.MY_DATA_CHECK_CODE);
 */
-
         mTts = new TextToSpeech(this,this);
 		mTts.setLanguage(new Locale("en", "US"));//default
         //==================================================================
@@ -664,6 +666,15 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 //        myTransArrayList.add(0, UsbongUtils.getDefaultLanguage());
         myTransArrayList.add(0, UsbongUtils.getDefaultLanguageOfXML()); //edited by Mike, 20160608
         final int myTransArrayListSize = myTransArrayList.size();
+
+        //added by Mike, 20160618
+        currSelectedItemForSetLanguage = UsbongUtils.getLanguageID(UsbongUtils.getDefaultLanguage());
+		for (int i = 0; i < myTransArrayListSize; i++) {
+			if (myTransArrayList.get(i).equals(UsbongUtils.getLanguageBasedOnID(currLanguageBeingUsed))) {
+				currSelectedItemForSetLanguage = i;
+			}
+		}
+        
 /*		        
 		for (int i = 0; i < myTransArrayListSize; i++) {
 		    arrayAdapter.add(myTransArrayList.get(i));				    
