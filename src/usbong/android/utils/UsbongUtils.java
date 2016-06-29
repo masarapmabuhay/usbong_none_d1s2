@@ -463,10 +463,11 @@ public class UsbongUtils {
 	//updated by Mike, 20160504
 	//must comply with JDK 1.6
 	public static boolean isLanguageIsAnException(String s) {
-		if (s.equals("English")) {
+/*		//commented out by Mike, 20160612
+ 		if (s.equals("English")) {
 			return true;
 		}
-		else if (s.equals("Filipino")) {
+		else */if (s.equals("Filipino")) {
 			return true;
 		}				
 		return false;
