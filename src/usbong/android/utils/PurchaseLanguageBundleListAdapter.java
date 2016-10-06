@@ -132,7 +132,7 @@ public class PurchaseLanguageBundleListAdapter extends BaseAdapter
 		      String signature = signatureList.get(i);
 		      String sku = ownedSkus.get(i);
 
-/*//commented out by Mike, 20160914
+/*//commented out by Mike, 20161005
 //consume product items
 		      try {
 			      JSONObject o = new JSONObject(purchaseData);
@@ -144,7 +144,6 @@ public class PurchaseLanguageBundleListAdapter extends BaseAdapter
 		    	  e.printStackTrace();
 		      }
 */		      
-		      
 	    	  if (sku.contains("local")) {
     			languageBundleList[0][1] = "Owned";
     			UsbongUtils.hasUnlockedLocalLanguages=true;
