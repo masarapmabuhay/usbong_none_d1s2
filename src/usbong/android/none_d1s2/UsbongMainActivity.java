@@ -14,23 +14,15 @@
  */
 package usbong.android.none_d1s2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
-import usbong.android.utils.UsbongConstants;
+import usbong.android.utils.AppRater;
 import usbong.android.utils.UsbongUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,7 +32,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 /*
  * This is Usbong's Main Menu activity. 
@@ -85,6 +76,16 @@ public class UsbongMainActivity extends AppCompatActivity/*Activity*/
 	        instance = this;
 //	    	startTime = new Date();
 	    	
+            //added by Mike, 20161117
+            Bundle extras = getIntent().getExtras();
+            if (extras!=null) {
+                String message = extras.getString("completed_tree");
+
+                if (message.equals("true")) {
+                    AppRater.showRateDialog(this); 
+                }                    
+            }
+            	        
 	        reset();
 	        initMainMenuScreen();
     }

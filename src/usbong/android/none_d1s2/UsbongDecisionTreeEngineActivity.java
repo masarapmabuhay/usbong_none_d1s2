@@ -37,13 +37,13 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import usbong.android.features.node.PaintActivity;
 import usbong.android.features.node.QRCodeReaderActivity;
 import usbong.android.multimedia.audio.AudioRecorder;
+import usbong.android.utils.AppRater;
 import usbong.android.utils.FedorMyLocation;
 import usbong.android.utils.PurchaseLanguageBundleListAdapter;
 import usbong.android.utils.UsbongConstants;
 import usbong.android.utils.UsbongScreenProcessor;
 import usbong.android.utils.UsbongUtils;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -83,7 +83,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -2250,13 +2249,22 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 
     		//added by Mike, 20160415
     		if (UsbongUtils.IS_IN_AUTO_LOOP_MODE) {
+                //added by Mike, 20161118
+                AppRater.showRateDialog(this); 
+
     			isAutoLoopedTree=true;
     			initParser(myTree);
     			return;
     		}
-    		else {
-    			finish();
-    		}
+            else {        
+                //return to main activity
+                finish();
+                //added by Mike, 20161118
+                Intent toUsbongMainActivityIntent = new Intent(UsbongDecisionTreeEngineActivity.this, UsbongMainActivity.class);
+                toUsbongMainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+                toUsbongMainActivityIntent.putExtra("completed_tree","true");
+                startActivity(toUsbongMainActivityIntent);
+            }
     	}
     	else {			
     		if (currScreen==UsbongConstants.YES_NO_DECISION_SCREEN) {
