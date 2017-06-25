@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Syson
+ * Copyright 2016 Usbong Social Systems, Inc.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -410,7 +410,7 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 			protected Boolean doInBackground(String... params) {
 			    try {
 			    	UsbongUtils.initInAppBillingService(getInstance());
-                    UsbongUtils.initInAppBillingService(getInstance()); //need to call this twice to get the updated languageBundleList
+			    	UsbongUtils.initInAppBillingService(getInstance()); //need to call this twice to get the updated languageBundleList
 			    }
 			    catch (Exception e) {
 			    	e.printStackTrace();
@@ -2488,7 +2488,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
     			initParser();
     		}	
     		else if (currScreen==UsbongConstants.MULTIPLE_RADIO_BUTTONS_SCREEN) {
+/*	//removed by Mike, 20170625
 				currUsbongNode = nextUsbongNodeIfYes; //nextUsbongNodeIfNo will also do, since this is "Any"
+*/
     			RadioGroup myRadioGroup = (RadioGroup)findViewById(R.id.multiple_radio_buttons_radiogroup);				        				        		    			
 
 //		    			if (UsbongUtils.IS_IN_DEBUG_MODE==false) {
@@ -2528,12 +2530,14 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 */		    			
     		}
     		else if (currScreen==UsbongConstants.MULTIPLE_RADIO_BUTTONS_WITH_ANSWER_SCREEN) {
+/*	//removed by Mike, 20170625
 				currUsbongNode = nextUsbongNodeIfYes; //nextUsbongNodeIfNo will also do, since this is "Any"
+*/
     			RadioGroup myRadioGroup = (RadioGroup)findViewById(R.id.multiple_radio_buttons_radiogroup);				        				        		    			
 
 /*		    			if (UsbongUtils.IS_IN_DEBUG_MODE==false) {
  */
-	    			if (myRadioGroup.getCheckedRadioButtonId()==-1) { //no radio button checked			    							    				
+	    			if (myRadioGroup.getCheckedRadioButtonId()==-1) { //no radio button checked
 		        		if (!UsbongUtils.IS_IN_DEBUG_MODE) {
 		        			if (!isAnOptionalNode) {
 			    				showRequiredFieldAlert(PLEASE_CHOOSE_AN_ANSWER_ALERT_TYPE);
@@ -2615,7 +2619,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
     		else if ((currScreen==UsbongConstants.TEXTFIELD_SCREEN) 
     				|| (currScreen==UsbongConstants.TEXTFIELD_WITH_UNIT_SCREEN)
     				|| (currScreen==UsbongConstants.TEXTFIELD_NUMERICAL_SCREEN)) {
-    			currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+*/
 		        EditText myTextFieldScreenEditText = (EditText)findViewById(R.id.textfield_edittext);
 
 //				        if (UsbongUtils.IS_IN_DEBUG_MODE==false) {
@@ -2647,7 +2653,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 					}
     		}
     		else if (currScreen==UsbongConstants.TEXTFIELD_WITH_ANSWER_SCREEN) {
-    			currUsbongNode = nextUsbongNodeIfYes; 
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes;
+*/
 		        EditText myTextFieldScreenEditText = (EditText)findViewById(R.id.textfield_edittext);
 			        //if it's blank
 	    			if (myTextFieldScreenEditText.getText().toString().trim().equals("")) {
@@ -2702,7 +2710,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 					}
     		}
     		else if ((currScreen==UsbongConstants.TEXTAREA_SCREEN)) {
-    			currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes; //nextUsbongNodeIfNo will also do, since this is "Any"
+*/
 		        EditText myTextAreaScreenEditText = (EditText)findViewById(R.id.textarea_edittext);
 
 //				        if (UsbongUtils.IS_IN_DEBUG_MODE==false) {
@@ -2733,7 +2743,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 					}
     		}
     		else if (currScreen==UsbongConstants.TEXTAREA_WITH_ANSWER_SCREEN) {
-    			currUsbongNode = nextUsbongNodeIfYes; 
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes;
+*/
 		        EditText myTextAreaScreenEditText = (EditText)findViewById(R.id.textarea_edittext);
 			        //if it's blank
 	    			if (myTextAreaScreenEditText.getText().toString().trim().equals("")) {
@@ -2789,7 +2801,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 					}
     		}
     		else if (currScreen==UsbongConstants.GPS_LOCATION_SCREEN) {
-    			currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+*/
 				TextView myLongitudeTextView = (TextView)findViewById(R.id.longitude_textview);
 	            TextView myLatitudeTextView = (TextView)findViewById(R.id.latitude_textview);
 
@@ -2846,7 +2860,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
     			}
     		}		    		
     		else if (currScreen==UsbongConstants.DATE_SCREEN) {
-    			currUsbongNode = nextUsbongNodeIfYes;
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes;
+*/
     			//added by Mike, 13 Oct. 2015
     			DatePicker myDatePicker = (DatePicker) findViewById(R.id.date_picker);		    			
 	    		UsbongUtils.addElementToContainer(usbongAnswerContainer, "A,"+myDatePicker.getMonth() +
@@ -2870,14 +2886,18 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
     			initParser();				        	
     		}		    		
     		else if (currScreen==UsbongConstants.TIMESTAMP_DISPLAY_SCREEN) {
-    			currUsbongNode = nextUsbongNodeIfYes;
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes;
+*/
 	    		UsbongUtils.addElementToContainer(usbongAnswerContainer, timestampString+";", usbongAnswerContainerCounter);
 				usbongAnswerContainerCounter++;
 
     			initParser();				        	
     		}		    				    		
     		else if (currScreen==UsbongConstants.QR_CODE_READER_SCREEN) {
-    			currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+*/
 
     			if (!myQRCodeContent.equals("")) {
 //		    				usbongAnswerContainer.addElement("Y,"+myQRCodeContent+";");							
@@ -2892,7 +2912,9 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
     			initParser();				        	
     		}
     		else if ((currScreen==UsbongConstants.DCAT_SUMMARY_SCREEN)) {
-    			currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+/*	//removed by Mike, 20170625
+				currUsbongNode = nextUsbongNodeIfYes; //= nextIMCIQuestionIfNo will also do
+*/
 /*
 				        LinearLayout myDCATSummaryLinearLayout = (LinearLayout)findViewById(R.id.dcat_summary_linearlayout);
 				        int total = myDCATSummaryLinearLayout.getChildCount();
@@ -2909,7 +2931,7 @@ public class UsbongDecisionTreeEngineActivity extends AppCompatActivity implemen
 				initParser();		    		}
 
     		else { //TODO: do this for now		    		
-    			currUsbongNode = nextUsbongNodeIfYes; //nextUsbongNodeIfNo will also do, since this is "Any"
+				currUsbongNode = nextUsbongNodeIfYes; //nextUsbongNodeIfNo will also do, since this is "Any"
 //						usbongAnswerContainer.addElement("A;");															
 	    		UsbongUtils.addElementToContainer(usbongAnswerContainer, "A;", usbongAnswerContainerCounter);
 				usbongAnswerContainerCounter++;
